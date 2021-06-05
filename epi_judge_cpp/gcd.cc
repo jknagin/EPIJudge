@@ -2,7 +2,10 @@
 
 long long Gcd(long long x, long long y) {
   // TODO - you fill in here.
-  return 0;
+    if (x == 0) return y;
+    if (y == 0) return x;
+    long long R = x % y;
+    return Gcd(y, R);
 }
 
 int main(int argc, char* argv[]) {

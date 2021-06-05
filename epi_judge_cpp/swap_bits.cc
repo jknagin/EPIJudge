@@ -1,7 +1,16 @@
 #include "test_framework/generic_test.h"
 long long SwapBits(long long x, int i, int j) {
-  // TODO - you fill in here.
-  return 0;
+  // If the bits at i and j are not equal, then we need to swap them
+  if (((x >> i) & 1) != ((x >> j) & 1))
+  {
+    // Bitmask is all 0s except for 1's at positions i and j
+    // 1ull: 1 as an unsigned long long
+    unsigned long long bitmask = (1ull << i) | (1ull << j);
+    // x = x ^ bitmask negates the values of bits i and j because a ^ 0 = a and a ^ 1 = !a
+    //x ^= bitmask;
+    x = x ^ bitmask;
+  }
+  return x;
 }
 
 int main(int argc, char* argv[]) {

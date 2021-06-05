@@ -1,7 +1,17 @@
 #include "test_framework/generic_test.h"
 int Fibonacci(int n) {
   // TODO - you fill in here.
-  return -1;
+    if (n == 0 || n == 1) return n;
+    std::array<int, 2> fib;
+    fib[0] = 0;
+    fib[1] = 1;
+    for (int i = 2; i <= n; ++i)
+    {
+        int newFib = fib[0] + fib[1];
+        fib[0] = fib[1];
+        fib[1] = newFib;
+    }
+    return fib[1];
 }
 
 int main(int argc, char* argv[]) {

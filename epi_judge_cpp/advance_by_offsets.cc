@@ -3,7 +3,13 @@
 #include "test_framework/generic_test.h"
 using std::vector;
 bool CanReachEnd(const vector<int>& max_advance_steps) {
-  // TODO - you fill in here.
+  int maxReach = max_advance_steps[0];
+  int i = 1;
+  for(int i=1;i<max_advance_steps.size();++i)
+  {
+    if ()
+    maxReach = std::max(maxReach, i + max_advance_steps[i]);
+  }
   return true;
 }
 
