@@ -326,7 +326,7 @@ problem_mapping = {
         },
         "5.11 Compute the next permutation": {
             "C++: next_permutation.cc": {
-                "passed": 0,
+                "passed": 2001,
                 "total": 2001
             },
             "Java: NextPermutation.java": {
@@ -340,7 +340,7 @@ problem_mapping = {
         },
         "5.12 Sample offline data": {
             "C++: offline_sampling.cc": {
-                "passed": 0,
+                "passed": 8,
                 "total": 8
             },
             "Java: OfflineSampling.java": {
@@ -368,7 +368,7 @@ problem_mapping = {
         },
         "5.14 Compute a random permutation": {
             "C++: random_permutation.cc": {
-                "passed": 0,
+                "passed": 1,
                 "total": 6
             },
             "Java: RandomPermutation.java": {
@@ -410,7 +410,7 @@ problem_mapping = {
         },
         "5.17 The Sudoku checker problem": {
             "C++: is_valid_sudoku.cc": {
-                "passed": 0,
+                "passed": 745,
                 "total": 745
             },
             "Java: IsValidSudoku.java": {
@@ -424,7 +424,7 @@ problem_mapping = {
         },
         "5.18 Compute the spiral ordering of a 2D array": {
             "C++: spiral_ordering.cc": {
-                "passed": 0,
+                "passed": 51,
                 "total": 51
             },
             "Java: SpiralOrdering.java": {
@@ -438,7 +438,7 @@ problem_mapping = {
         },
         "5.19 Rotate a 2D array": {
             "C++: matrix_rotation.cc": {
-                "passed": 0,
+                "passed": 51,
                 "total": 51
             },
             "Java: MatrixRotation.java": {
@@ -452,7 +452,7 @@ problem_mapping = {
         },
         "5.20 Compute rows in Pascal's Triangle": {
             "C++: pascal_triangle.cc": {
-                "passed": 0,
+                "passed": 35,
                 "total": 35
             },
             "Java: PascalTriangle.java": {
@@ -482,7 +482,7 @@ problem_mapping = {
         },
         "6.01 Interconvert strings and integers": {
             "C++: string_integer_interconversion.cc": {
-                "passed": 0,
+                "passed": 15002,
                 "total": 15002
             },
             "Java: StringIntegerInterconversion.java": {
@@ -496,7 +496,7 @@ problem_mapping = {
         },
         "6.02 Base conversion": {
             "C++: convert_base.cc": {
-                "passed": 0,
+                "passed": 20001,
                 "total": 20001
             },
             "Java: ConvertBase.java": {

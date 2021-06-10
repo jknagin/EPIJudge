@@ -1,14 +1,27 @@
 #include <functional>
 #include <vector>
+#include <random>
 
 #include "test_framework/generic_test.h"
 #include "test_framework/random_sequence_checker.h"
 #include "test_framework/timed_executor.h"
+
 using std::bind;
 using std::vector;
 vector<int> ComputeRandomPermutation(int n) {
-  // TODO - you fill in here.
-  return {};
+  // Generate initial permutation: [0, 1, 2, 3, ..., n - 1]
+  std::vector<int> perm(n);
+  //for (int i = 0; i < n; ++i) perm[i] = i;
+  std::iota(perm.begin(), perm.end(), 0);
+
+  // Randomly sample n elements from perm
+  std::default_random_engine seed;
+  for (int i = 0; i < n; ++i)
+  {
+    int j = std::uniform_int_distribution<int>{ i, n - 1 }(seed);
+    std::swap(perm[i], perm[j]);
+  }
+  return perm;
 }
 int Factorial(int n) { return n <= 1 ? 1 : n * Factorial(n - 1); }
 
