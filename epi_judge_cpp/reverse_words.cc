@@ -4,8 +4,44 @@
 #include "test_framework/timed_executor.h"
 using std::string;
 
-void ReverseWords(string* s) {
-  // TODO - you fill in here.
+int findNextCharacter(int i, const std::string& str)
+{
+  while (i < str.length() && str[i] == ' ') ++i;
+  return i < str.length() ? i : -1;
+}
+
+int findNextWhitespace(int i, const std::string& str)
+{
+  while (i < str.length() && str[i] != ' ') ++i;
+  return i < str.length() ? i : -1;
+}
+
+void ReverseWords(string* s)
+{
+  std::string& str = *s;
+  if (str.length() == 0) return;
+
+  // Reverse entire string
+  std::reverse(str.begin(), str.end());
+
+  // Reverse individual words
+  int start = 0;
+  int end = 0;
+  while (start < str.length())
+  {
+    start = findNextCharacter(start, str);
+    end = findNextWhitespace(start + 1, str);
+
+    if (start == -1) break;
+    end = end == -1 ? str.length() - 1 : end - 1;
+
+    // At this point, there is a word in [start, end] inclusive
+    std::reverse(str.begin() + start, str.begin() + end + 1);
+
+    // Move on past this word
+    start = end + 1;
+    end = start;
+  }
   return;
 }
 string ReverseWordsWrapper(TimedExecutor& executor, string s) {
