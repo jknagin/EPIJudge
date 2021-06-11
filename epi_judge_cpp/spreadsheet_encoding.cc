@@ -4,8 +4,17 @@
 using std::string;
 
 int SSDecodeColID(const string& col) {
-  // TODO - you fill in here.
-  return 0;
+  // "A" -> 1 = 1 * 1
+  // "Z" -> 26 = 26 * 1
+  // "AA" -> 27 = 1*26 + 1*1
+  int ret = 0;
+  int N = col.length();
+  for (int i = 0; i < N; ++i)
+  {
+    ret *= 26;
+    ret += (col[i] - 'A' + 1);
+  }
+  return ret;
 }
 
 int main(int argc, char* argv[]) {

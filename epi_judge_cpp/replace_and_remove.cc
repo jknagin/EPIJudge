@@ -8,8 +8,39 @@ using std::string;
 using std::vector;
 
 int ReplaceAndRemove(int size, char s[]) {
-  // TODO - you fill in here.
-  return 0;
+  // a, c, d, b, b, c, a -> d, d, c, d, c, d, d
+  // Remove b's and count a's
+  int writeIndex = 0;
+  int aCount = 0;
+  for (int i = 0; i < size; ++i)
+  {
+    if (s[i] != 'b') s[writeIndex++] = s[i];
+    if (s[i] == 'a') ++aCount;
+  }
+
+  // Replace a's with two d's, starting from the back
+  // a, c, d, c, a, _, _
+  int start = writeIndex - 1; // the last element written to previously is at writeIndex - 1 because writeIndex is incremented one extra time in the previous for loop
+  writeIndex += (aCount - 1); // now writeIndex points to the last element of the entire s array, which is where we want to start writing to fit in the d's
+  const int ret = writeIndex + 1; // final size of array after performing all operations
+  for (int i = start; i >= 0; --i)
+  {
+    // If the i'th character is an a, write two d's
+    if (s[i] == 'a')
+    {
+      s[writeIndex] = 'd';
+      s[writeIndex - 1] = 'd';
+      writeIndex -= 2;
+    }
+    // Otherwise, just write the i'th character
+    else
+    {
+      s[writeIndex] = s[i];
+      writeIndex -= 1;
+    }
+  }
+
+  return ret;
 }
 vector<string> ReplaceAndRemoveWrapper(TimedExecutor& executor, int size,
                                        const vector<string>& s) {
