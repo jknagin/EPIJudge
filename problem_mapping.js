@@ -652,15 +652,15 @@ problem_mapping = {
     "Chapter 07: Linked Lists": {
         "7.00 Bootcamp: Linked Lists": {
             "C++: delete_from_list.cc": {
-                "passed": 0,
+                "passed": 457,
                 "total": 457
             },
             "C++: insert_in_list.cc": {
-                "passed": 0,
+                "passed": 504,
                 "total": 504
             },
             "C++: search_in_list.cc": {
-                "passed": 0,
+                "passed": 505,
                 "total": 505
             },
             "Java: DeleteFromList.java": {
