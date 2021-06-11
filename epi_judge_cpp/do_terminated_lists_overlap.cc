@@ -6,10 +6,46 @@
 #include "test_framework/timed_executor.h"
 using std::shared_ptr;
 
+int listLength(shared_ptr<ListNode<int> > head)
+{
+  shared_ptr<ListNode<int> > p = head;
+  int len = 0;
+  while (p != nullptr)
+  {
+    p = p->next;
+    ++len;
+  }
+  return len;
+}
+
 shared_ptr<ListNode<int>> OverlappingNoCycleLists(
     shared_ptr<ListNode<int>> l0, shared_ptr<ListNode<int>> l1) {
-  // TODO - you fill in here.
-  return nullptr;
+  if (l0 == nullptr || l1 == nullptr) return nullptr;
+  int length0 = listLength(l0);
+  int length1 = listLength(l1);
+
+  // Offset pointer to longer list by difference between list lengths
+  shared_ptr<ListNode<int> > p0 = l0;
+  shared_ptr<ListNode<int> > p1 = l1;
+
+  if (length0 < length1)
+  {
+    for (int i = length0; i < length1; ++i) p1 = p1->next;
+  }
+  else if (length1 < length0)
+  {
+    for (int i = length1; i < length0; ++i) p0 = p0->next;
+  }
+
+  // Increment both pointers, returning either of them if they are equal
+  while (p0 != p1)
+  {
+    p0 = p0->next;
+    p1 = p1->next;
+  }
+  
+  // This works even if there is no intersection, because then p0 = p1 = null and we want to return null if there is no intersection
+  return p0;
 }
 void OverlappingNoCycleListsWrapper(TimedExecutor& executor,
                                     shared_ptr<ListNode<int>> l0,
