@@ -704,7 +704,7 @@ problem_mapping = {
         },
         "7.02 Reverse a single sublist": {
             "C++: reverse_sublist.cc": {
-                "passed": 0,
+                "passed": 210,
                 "total": 210
             },
             "Java: ReverseSublist.java": {
@@ -858,7 +858,7 @@ problem_mapping = {
         },
         "7.13 Add list-based integers": {
             "C++: int_as_list_add.cc": {
-                "passed": 0,
+                "passed": 2002,
                 "total": 2002
             },
             "Java: IntAsListAdd.java": {
