@@ -10,8 +10,99 @@
 using std::shared_ptr;
 shared_ptr<ListNode<int>> ListPivoting(const shared_ptr<ListNode<int>>& l,
                                        int x) {
-  // TODO - you fill in here.
-  return nullptr;
+  if (l == nullptr) return l;
+
+  // Maintain three lists - less, equal, greater
+  // As we traverse the list, append the current node to the appropriate list
+  shared_ptr<ListNode<int> > lessHead, equalHead, greaterHead, less, equal, greater, p;
+  p = l;
+  while (p != nullptr)
+  {
+    if (p->data < x)
+    {
+      if (lessHead == nullptr)
+      {
+        lessHead = p;
+        less = p;
+      }
+      else
+      {
+        less->next = p;
+        less = less->next;
+      }
+    }
+    else if (p->data == x)
+    {
+      if (equalHead == nullptr)
+      {
+        equalHead = p;
+        equal = p;
+      }
+      else
+      {
+        equal->next = p;
+        equal = equal->next;
+      }
+    }
+    else
+    {
+      if (greaterHead == nullptr)
+      {
+        greaterHead = p;
+        greater = p;
+      }
+      else
+      {
+        greater->next = p;
+        greater = greater->next;
+      }
+    }
+
+    p = p->next;
+  }
+
+  // Build the lists less->equal->greater  
+  if (lessHead != nullptr)
+  {
+    if (equalHead != nullptr)
+    {
+      less->next = equalHead;
+      if (greaterHead != nullptr)
+      {
+        equal->next = greaterHead;
+        greater->next = nullptr;
+      }
+      else
+      {
+        equal->next = nullptr;
+      }
+    }
+    else
+    {
+      less->next = nullptr;
+    }
+    return lessHead;
+  }
+  else if (equalHead != nullptr)
+  {
+    if (greaterHead != nullptr)
+    {
+      equal->next = greaterHead;
+      greater->next = nullptr;
+    }
+    else
+    {
+      equal->next = nullptr;
+    }
+    return equalHead;
+  }
+  else if (greaterHead != nullptr)
+  {
+    greater->next = nullptr;
+    return greaterHead;
+  }
+
+  return l; // Should never get here
 }
 std::vector<int> ListToVector(const shared_ptr<ListNode<int>>& l) {
   std::vector<int> v;
