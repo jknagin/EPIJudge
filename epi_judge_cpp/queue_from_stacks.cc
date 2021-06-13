@@ -7,14 +7,28 @@
 #include "test_framework/test_failure.h"
 using std::length_error;
 class Queue {
+private:
+  std::array<std::stack<int>, 2> stacks;
  public:
+   
   void Enqueue(int x) {
-    // TODO - you fill in here.
-    return;
+    // Always push to first stack
+    stacks[0].push(x);
   }
   int Dequeue() {
-    // TODO - you fill in here.
-    return 0;
+    // Always pop from second stack
+    // If second stack is empty, move all elements from first stack to second stack
+    if (stacks[1].empty())
+    {
+      while (!stacks[0].empty())
+      {
+        stacks[1].push(stacks[0].top());
+        stacks[0].pop();
+      }
+    }
+    int ret = stacks[1].top();
+    stacks[1].pop();
+    return ret;
   }
 };
 struct QueueOp {

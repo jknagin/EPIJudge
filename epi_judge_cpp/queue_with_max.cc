@@ -6,18 +6,38 @@
 using std::length_error;
 
 class QueueWithMax {
+private:
+  // Data is a simple queue which just stores the incoming data
+  std::queue<int> data;
+  // maxes is a deque which is used to return the max value of the queue in O(1) time
+  std::deque<int> maxes;
+
  public:
   void Enqueue(int x) {
-    // TODO - you fill in here.
-    return;
+    data.push(x);
+
+    // Dequeue must be sorted in non-increasing order
+    // Pop elements from the back of maxes until maxes.back() >= x
+    while (!maxes.empty() && maxes.back() < x)
+    {
+      maxes.pop_back();
+    }
+    maxes.push_back(x);
   }
+
   int Dequeue() {
-    // TODO - you fill in here.
-    return 0;
+    int ret = data.front();
+    data.pop();
+
+    // Pop from the front of dequeue if the returned value is equal to the front of the deque
+    if (ret == maxes.front()) maxes.pop_front();
+
+    return ret;
   }
+
   int Max() const {
-    // TODO - you fill in here.
-    return 0;
+    // front of deque is the max value in the queue at any time
+    return maxes.front();
   }
 };
 struct QueueOp {

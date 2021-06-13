@@ -6,22 +6,35 @@
 using std::length_error;
 
 class Stack {
+
+  struct StackElement
+  {
+    int value;
+    int max;
+  };
+private:
+  std::stack<StackElement> stack_;
+
  public:
   bool Empty() const {
-    // TODO - you fill in here.
-    return true;
+    return stack_.empty();
   }
   int Max() const {
-    // TODO - you fill in here.
-    return 0;
+    return Empty() ? std::numeric_limits<int>::min() : stack_.top().max;
   }
+
   int Pop() {
-    // TODO - you fill in here.
-    return 0;
+    StackElement top = stack_.top();
+    stack_.pop();
+    return top.value;
   }
+
+  // When pushing, store the max value of the stack (including the element to be added) in the stack element made from the element to be added
   void Push(int x) {
-    // TODO - you fill in here.
-    return;
+    StackElement se;
+    se.value = x;
+    se.max = std::max(Max(), x);
+    stack_.push(se);
   }
 };
 struct StackOp {

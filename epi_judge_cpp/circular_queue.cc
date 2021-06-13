@@ -3,18 +3,45 @@
 #include "test_framework/test_failure.h"
 class Queue {
  public:
-  Queue(size_t capacity) {}
+   std::vector<int> data;
+   int head;
+	 int tail;
+   size_t numElements;
+   Queue(size_t capacity) : head(0), tail(0), numElements(0), data(capacity)
+   {
+   }
+
   void Enqueue(int x) {
-    // TODO - you fill in here.
-    return;
+    /* If we add to a full queue:
+      * left shift the head back to the start of data
+      * set head to 0, right to numElements (queue is in interval [head, tail) )
+      * increase the size of data
+      */
+    if (numElements == data.size())
+    {
+      std::rotate(data.begin(), data.begin() + head, data.end());
+      head = 0;
+      tail = numElements;
+      data.resize(2 * data.size());
+    }
+
+    // Normal insertion, modulo tail by data.size() to wrap it back to 0 if it goes out of bounds
+		data[tail] = x;
+		++numElements;
+		++tail;
+    tail = tail % data.size();
   }
   int Dequeue() {
-    // TODO - you fill in here.
-    return 0;
+    // Normal removal, just increment head and wrap it around to 0 with modulo data.size()
+    int ret = data[head];
+    ++head;
+    head = head % data.size();
+    --numElements;
+    return ret;
   }
+
   int Size() const {
-    // TODO - you fill in here.
-    return 0;
+    return numElements;
   }
 };
 struct QueueOp {
