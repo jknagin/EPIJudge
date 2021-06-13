@@ -1,8 +1,23 @@
 #include "binary_tree_node.h"
 #include "test_framework/generic_test.h"
+
+int height(BinaryTreeNode<int>* node, bool& balanced)
+{
+  if (node == nullptr) return 0;
+  if (!balanced) return 0;
+  int leftHeight = height(node->left.get(), balanced);
+  if (!balanced) return 0;
+  int rightHeight = height(node->right.get(), balanced);
+  if (!balanced) return 0;
+  balanced = std::abs(rightHeight - leftHeight) <= 1;
+  if (!balanced) return 0;
+  return std::max(leftHeight, rightHeight) + 1;
+}
+
 bool IsBalanced(const unique_ptr<BinaryTreeNode<int>>& tree) {
-  // TODO - you fill in here.
-  return true;
+  bool balanced = true;
+  height(tree.get(), balanced);
+  return balanced;
 }
 
 int main(int argc, char* argv[]) {

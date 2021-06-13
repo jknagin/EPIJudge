@@ -6,8 +6,12 @@ using std::unique_ptr;
 
 bool HasPathSum(const unique_ptr<BinaryTreeNode<int>>& tree,
                 int remaining_weight) {
-  // TODO - you fill in here.
-  return true;
+  if (tree == nullptr) return false;
+  remaining_weight -= tree->data;
+  if (tree->left == nullptr && tree->right == nullptr && remaining_weight == 0) return true; // leaf node and the path sum is correct
+
+  // If we haven't found a correct path sum yet, keep looking and see if either child leads to one 
+  return HasPathSum(tree->left, remaining_weight) || HasPathSum(tree->right, remaining_weight);
 }
 
 int main(int argc, char* argv[]) {

@@ -4,10 +4,38 @@
 #include "test_framework/test_failure.h"
 #include "test_framework/timed_executor.h"
 
+int getLength(BinaryTreeNode<int>* node)
+{
+  int length = 0;
+  while (node != nullptr)
+  {
+    node = node->parent;
+    ++length;
+  }
+  return length;
+}
+
+void offsetByK(BinaryTreeNode<int>*& node, int k)
+{
+  for (int i = 0; i < k; ++i) node = node->parent;
+}
+
+// This is the same algorithm as finding the intersection point of two linked lists
 BinaryTreeNode<int>* Lca(const unique_ptr<BinaryTreeNode<int>>& node0,
                          const unique_ptr<BinaryTreeNode<int>>& node1) {
-  // TODO - you fill in here.
-  return nullptr;
+  int length0 = getLength(node0.get());
+  int length1 = getLength(node1.get());
+  BinaryTreeNode<int>* start0 = node0.get();
+  BinaryTreeNode<int>* start1 = node1.get();
+  int k = std::abs(length1 - length0);
+  if (length0 > length1) offsetByK(start0, k);
+  else if (length0 < length1) offsetByK(start1, k);
+  while (start0 != start1)
+  {
+    start0 = start0->parent;
+    start1 = start1->parent;
+  }
+  return start0;
 }
 int LcaWrapper(TimedExecutor& executor,
                const unique_ptr<BinaryTreeNode<int>>& tree, int key0,

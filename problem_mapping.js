@@ -874,7 +874,7 @@ problem_mapping = {
     "Chapter 08: Stacks and Queues": {
         "8.01 Implement a stack with max API": {
             "C++: stack_with_max.cc": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             },
             "Java: StackWithMax.java": {
@@ -888,7 +888,7 @@ problem_mapping = {
         },
         "8.02 Evaluate RPN expressions": {
             "C++: evaluate_rpn.cc": {
-                "passed": 0,
+                "passed": 108,
                 "total": 108
             },
             "Java: EvaluateRpn.java": {
@@ -902,7 +902,7 @@ problem_mapping = {
         },
         "8.03 Is a string well-formed?": {
             "C++: is_valid_parenthesization.cc": {
-                "passed": 0,
+                "passed": 78,
                 "total": 78
             },
             "Java: IsValidParenthesization.java": {
@@ -916,7 +916,7 @@ problem_mapping = {
         },
         "8.04 Normalize pathnames": {
             "C++: directory_path_normalization.cc": {
-                "passed": 0,
+                "passed": 255,
                 "total": 255
             },
             "Java: DirectoryPathNormalization.java": {
@@ -930,7 +930,7 @@ problem_mapping = {
         },
         "8.05 Compute buildings with a sunset view": {
             "C++: sunset_view.cc": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             },
             "Java: SunsetView.java": {
@@ -944,7 +944,7 @@ problem_mapping = {
         },
         "8.06 Compute binary tree nodes in order of increasing depth": {
             "C++: tree_level_order.cc": {
-                "passed": 0,
+                "passed": 3852,
                 "total": 3852
             },
             "Java: TreeLevelOrder.java": {
@@ -958,7 +958,7 @@ problem_mapping = {
         },
         "8.07 Implement a circular queue": {
             "C++: circular_queue.cc": {
-                "passed": 0,
+                "passed": 65,
                 "total": 65
             },
             "Java: CircularQueue.java": {
@@ -972,7 +972,7 @@ problem_mapping = {
         },
         "8.08 Implement a queue using stacks": {
             "C++: queue_from_stacks.cc": {
-                "passed": 0,
+                "passed": 65,
                 "total": 65
             },
             "Java: QueueFromStacks.java": {
@@ -986,7 +986,7 @@ problem_mapping = {
         },
         "8.09 Implement a queue with max API": {
             "C++: queue_with_max.cc": {
-                "passed": 0,
+                "passed": 201,
                 "total": 201
             },
             "Java: QueueWithMax.java": {
@@ -1002,7 +1002,7 @@ problem_mapping = {
     "Chapter 09: Binary Trees": {
         "9.01 Test if a binary tree is height-balanced": {
             "C++: is_tree_balanced.cc": {
-                "passed": 0,
+                "passed": 3852,
                 "total": 3852
             },
             "Java: IsTreeBalanced.java": {
@@ -1016,7 +1016,7 @@ problem_mapping = {
         },
         "9.02 Test if a binary tree is symmetric": {
             "C++: is_tree_symmetric.cc": {
-                "passed": 0,
+                "passed": 3852,
                 "total": 3852
             },
             "Java: IsTreeSymmetric.java": {
@@ -1030,7 +1030,7 @@ problem_mapping = {
         },
         "9.03 Compute the lowest common ancestor in a binary tree": {
             "C++: lowest_common_ancestor.cc": {
-                "passed": 0,
+                "passed": 948,
                 "total": 948
             },
             "Java: LowestCommonAncestor.java": {
@@ -1044,7 +1044,7 @@ problem_mapping = {
         },
         "9.04 Compute the LCA when nodes have parent pointers": {
             "C++: lowest_common_ancestor_with_parent.cc": {
-                "passed": 0,
+                "passed": 948,
                 "total": 948
             },
             "Java: LowestCommonAncestorWithParent.java": {
@@ -1058,7 +1058,7 @@ problem_mapping = {
         },
         "9.05 Sum the root-to-leaf paths in a binary tree": {
             "C++: sum_root_to_leaf.cc": {
-                "passed": 0,
+                "passed": 3849,
                 "total": 3849
             },
             "Java: SumRootToLeaf.java": {
@@ -1072,7 +1072,7 @@ problem_mapping = {
         },
         "9.06 Find a root to leaf path with specified sum": {
             "C++: path_sum.cc": {
-                "passed": 0,
+                "passed": 7690,
                 "total": 7690
             },
             "Java: PathSum.java": {
