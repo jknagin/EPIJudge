@@ -4,8 +4,29 @@
 
 BinaryTreeNode<int>* FindSuccessor(
     const unique_ptr<BinaryTreeNode<int>>& node) {
-  // TODO - you fill in here.
-  return nullptr;
+  // If there is a right subtree, the in order successor is the leftmost child of the right subtree
+  if (node->right != nullptr)
+  {
+    BinaryTreeNode<int>* curr = node->right.get();
+    while (curr->left != nullptr)
+    {
+      curr = curr->left.get();
+    }
+    return curr;
+  }
+  // If there is not a right subtree, go up the parent chain
+  // Once we get to a node up the chain where the node is a left child of its parent, the parent is the successor
+  else
+  {
+    BinaryTreeNode<int>* curr = node.get();
+    BinaryTreeNode<int>* parent = curr->parent;
+    while (parent != nullptr && curr != parent->left.get())
+    {
+      curr = parent;
+      parent = parent->parent;
+    }
+    return parent;
+  }
 }
 int FindSuccessorWrapper(const unique_ptr<BinaryTreeNode<int>>& tree,
                          int node_idx) {
