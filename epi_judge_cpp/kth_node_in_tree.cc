@@ -18,8 +18,31 @@ struct BinaryTreeNode {
 
 const BinaryTreeNode<int>* FindKthNodeBinaryTree(
     const unique_ptr<BinaryTreeNode<int>>& tree, int k) {
-  // TODO - you fill in here.
-  return nullptr;
+  BinaryTreeNode<int>* curr = tree.get();
+  if (curr == nullptr) return curr;
+
+  int currNum = curr->left ? curr->left->size + 1 : 1;
+  while (curr != nullptr)
+  { 
+    currNum = curr->left ? curr->left->size + 1 : 1; // currNum is the 1 + size of the left subtree
+    // Need to move right, we are skipping over currNum nodes, so decrease k by that amount
+    if (currNum < k)
+    {
+      k -= currNum;
+      curr = curr->right.get();
+    }
+    // Done
+    else if (currNum == k)
+    {
+      return curr;
+    }
+    // Move to the left, k remains the same
+    else
+    {
+      curr = curr->left.get();
+    }
+  }
+  return nullptr; // Should not reach
 }
 namespace test_framework {
 template <typename KeyT>
