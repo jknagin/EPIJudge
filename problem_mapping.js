@@ -1994,7 +1994,7 @@ problem_mapping = {
         },
         "15.03 Generate all nonattacking placements of n-Queens": {
             "C++: n_queens.cc": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Java: NQueens.java": {
@@ -2126,7 +2126,7 @@ problem_mapping = {
                 "total": 46
             },
             "C++: max_sum_subarray.cc": {
-                "passed": 0,
+                "passed": 1001,
                 "total": 1001
             },
             "Java: Fibonacci.java": {
@@ -3060,7 +3060,7 @@ problem_mapping = {
         },
         "24.35 Test if arbitrage is possible": {
             "C++: arbitrage.cc": {
-                "passed": 0,
+                "passed": 2,
                 "total": 201
             },
             "Java: Arbitrage.java": {
