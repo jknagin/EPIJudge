@@ -15,8 +15,9 @@ vector<int> SortKIncreasingDecreasingArray(const vector<int>& A) {
   std::vector<std::vector<int> > sortedArrays;
   bool increasing = true;
   int start = 0;
-  for(int i=1;i<=A.size();++i)
+  for(int i=1;i<=A.size();++i) // i<=A.size() instead of i<A.size() because we need one more loop after the end of the array to add the final subarray
   {
+    // Add final subarray to sorted
     if (i == A.size())
     {
       if (increasing)
@@ -28,12 +29,15 @@ vector<int> SortKIncreasingDecreasingArray(const vector<int>& A) {
         sortedArrays.emplace_back(A.rbegin() + A.size() - i, A.rbegin() + A.size() - start);
       }
     }
+
+    // Increasing subarray has ended at i (exclusive), so add it to the sorted arrays
     else if (increasing && A[i-1] > A[i])
     {
       increasing = false;
       sortedArrays.emplace_back(A.begin() + start, A.begin() + i);
       start = i;
     }
+    // Decreasing subarray has ended at i (exclusive), so add its reverse to the sorted arrays
     else if (!increasing && A[i-1] <= A[i])
     {
       increasing = true;
