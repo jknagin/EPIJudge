@@ -20,8 +20,32 @@ struct Star {
 vector<Star> FindClosestKStars(vector<Star>::const_iterator stars_begin,
                                const vector<Star>::const_iterator& stars_end,
                                int k) {
-  // TODO - you fill in here.
-  return {};
+  std::priority_queue<Star, std::vector<Star>, std::less<> > maxHeap;
+  // Priority queue to stores stars with k smallest distance (max heap)
+  // Add to max heap until its size is k
+  // Then, if we find an element whose value is less than the top value of k, push and pop to maintain the heap size k
+  for(auto it = stars_begin;it != stars_end;++it)
+  {
+    if (maxHeap.size() < k)
+    {
+      maxHeap.push(*it);
+    }
+    else if (*it < maxHeap.top())
+    {
+      maxHeap.push(*it);
+      maxHeap.pop();
+    }
+  }
+
+  // At the end, the stars in the heap are the k smallest stars
+  std::vector<Star> ret(maxHeap.size());
+  for(int i=0;i<ret.size();++i)
+  {
+    ret[i] = maxHeap.top();
+    maxHeap.pop();
+  }
+
+  return ret;
 }
 
 namespace test_framework {
