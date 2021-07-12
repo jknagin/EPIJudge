@@ -6,9 +6,19 @@
 using std::unique_ptr;
 using std::vector;
 
-vector<int> FindKLargestInBST(const unique_ptr<BstNode<int>>& tree, int k) {
-  // TODO - you fill in here.
-  return {};
+void reverseIOT(const std::unique_ptr<BstNode<int> >& tree, const int& k, std::vector<int>& ret)
+{
+  if (tree == nullptr) return;
+  reverseIOT(tree->right, k, ret);
+  if (ret.size() == k) return;
+  ret.emplace_back(tree->data);
+  reverseIOT(tree->left, k, ret);
+}
+
+vector<int> FindKLargestInBST(const unique_ptr<BstNode<int> >& tree, int k) {
+  std::vector<int> ret;
+  reverseIOT(tree, k, ret);
+  return ret;
 }
 
 int main(int argc, char* argv[]) {
