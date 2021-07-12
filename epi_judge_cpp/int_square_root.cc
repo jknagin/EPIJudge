@@ -1,7 +1,19 @@
 #include "test_framework/generic_test.h"
 
+unsigned long long square(int n) { return (unsigned long long)n*(unsigned long long)n; }
+
 int SquareRoot(int k) {
-  // TODO - you fill in here.
+  int left = 0;
+  int right = k;
+  while(left <= right)
+  {
+    int mid = (right - left) / 2 + left;
+    unsigned long long squaremid = square(mid);
+    if (squaremid == k) return mid;
+    else if (squaremid < k && square(mid + 1) > k) return mid;
+    else if (squaremid < k) left = mid + 1;
+    else right = mid - 1;
+  }
   return 0;
 }
 
