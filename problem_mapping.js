@@ -1270,7 +1270,7 @@ problem_mapping = {
         },
         "10.05 Compute the median of online data": {
             "C++: online_median.cc": {
-                "passed": 0,
+                "passed": 55,
                 "total": 55
             },
             "Java: OnlineMedian.java": {
@@ -1284,7 +1284,7 @@ problem_mapping = {
         },
         "10.06 Compute the k largest elements in a max-heap": {
             "C++: k_largest_in_heap.cc": {
-                "passed": 0,
+                "passed": 102,
                 "total": 102
             },
             "Java: KLargestInHeap.java": {
