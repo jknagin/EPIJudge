@@ -9,11 +9,18 @@
 using std::unique_ptr;
 using std::vector;
 
-unique_ptr<BstNode<int>> BuildMinHeightBSTFromSortedArray(
-    const vector<int>& A) {
-  // TODO - you fill in here.
-  return nullptr;
+std::unique_ptr<BstNode<int> > helper(const std::vector<int>& A, int start, int end)
+{
+  if (start > end) return nullptr;
+  int mid = (end - start) / 2 + start;
+  return std::make_unique<BstNode<int> >(BstNode<int>{A[mid], helper(A, start, mid - 1), helper(A, mid + 1, end)});
 }
+
+unique_ptr<BstNode<int>> BuildMinHeightBSTFromSortedArray( const vector<int>& A)
+{
+  return helper(A, 0, A.size() - 1);
+}
+
 int BuildMinHeightBSTFromSortedArrayWrapper(TimedExecutor& executor,
                                             const vector<int>& A) {
   auto result =
