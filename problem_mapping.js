@@ -1782,7 +1782,7 @@ problem_mapping = {
     "Chapter 14: Binary Search Trees": {
         "14.00 Bootcamp: Binary Search Trees": {
             "C++: search_in_bst.cc": {
-                "passed": 0,
+                "passed": 955,
                 "total": 955
             },
             "Java: SearchInBst.java": {
@@ -1796,7 +1796,7 @@ problem_mapping = {
         },
         "14.01 Test if a binary tree satisfies the BST property": {
             "C++: is_tree_a_bst.cc": {
-                "passed": 0,
+                "passed": 3139,
                 "total": 3139
             },
             "Java: IsTreeABst.java": {
@@ -1810,7 +1810,7 @@ problem_mapping = {
         },
         "14.02 Find the first key greater than a given value in a BST": {
             "C++: search_first_greater_value_in_bst.cc": {
-                "passed": 0,
+                "passed": 949,
                 "total": 949
             },
             "Java: SearchFirstGreaterValueInBst.java": {

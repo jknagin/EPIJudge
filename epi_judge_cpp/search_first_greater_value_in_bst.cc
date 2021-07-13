@@ -4,10 +4,25 @@
 #include "test_framework/generic_test.h"
 using std::unique_ptr;
 
-BstNode<int>* FindFirstGreaterThanK(const unique_ptr<BstNode<int>>& tree,
-                                    int k) {
-  // TODO - you fill in here.
-  return nullptr;
+BstNode<int>* FindFirstGreaterThanK(const unique_ptr<BstNode<int>>& tree, int k) {
+  BstNode<int>* p = tree.get();
+  BstNode<int>* ret = nullptr;
+
+  while(p)
+  {
+    // If the current node's value is greater than k, it's the best candidate for returning so far
+    if (p->data > k)
+    {
+      ret = p;
+      p = p->left.get();
+    }
+    // Else, the current node's value and all of its left subtree values are <= k, so ignore them entirely
+    else
+    {
+      p = p->right.get();
+    }
+  }
+  return ret;
 }
 int FindFirstGreaterThanKWrapper(const unique_ptr<BstNode<int>>& tree, int k) {
   auto result = FindFirstGreaterThanK(tree, k);
