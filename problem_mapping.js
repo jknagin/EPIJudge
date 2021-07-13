@@ -1398,7 +1398,7 @@ problem_mapping = {
         },
         "11.08 Find the kth largest element": {
             "C++: kth_largest_in_array.cc": {
-                "passed": 0,
+                "passed": 503,
                 "total": 503
             },
             "Java: KthLargestInArray.java": {
@@ -1442,7 +1442,7 @@ problem_mapping = {
     "Chapter 12: Hash Tables": {
         "12.00 Bootcamp: Hash Tables": {
             "C++: anagrams.cc": {
-                "passed": 0,
+                "passed": 9,
                 "total": 9
             },
             "Java: Anagrams.java": {
