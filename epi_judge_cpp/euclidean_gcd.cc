@@ -1,7 +1,9 @@
 #include "test_framework/generic_test.h"
 long long Gcd(long long x, long long y) {
-  // TODO - you fill in here.
-  return 0;
+  if (x == 0) return y;
+  if (y == 0) return x;
+  long long r = x % y;
+  return Gcd(y, r);
 }
 
 int main(int argc, char* argv[]) {
