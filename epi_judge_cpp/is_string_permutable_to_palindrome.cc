@@ -1,10 +1,27 @@
 #include <string>
-
+#include <unordered_map>
 #include "test_framework/generic_test.h"
 using std::string;
 
 bool CanFormPalindrome(const string& s) {
-  // TODO - you fill in here.
+  // Create frequency count of characters in s
+  std::unordered_map<char, int> m;
+  for(const auto& c : s)
+  {
+    if (!m.count(c)) m[c] = 0;
+    ++m[c];
+  }
+
+  // Ensure that at most one elements in s appears an odd number of times
+  bool oddseen = false;
+  for(auto it = m.begin();it != m.end();++it)
+  {
+    if(it->second % 2 == 1)
+    {
+      if (oddseen) return false;
+      oddseen = true;
+    } 
+  }
   return true;
 }
 
