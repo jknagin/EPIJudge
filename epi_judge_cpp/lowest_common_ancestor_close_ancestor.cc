@@ -7,10 +7,31 @@
 #include "test_framework/timed_executor.h"
 using std::unique_ptr;
 
-BinaryTreeNode<int>* Lca(const unique_ptr<BinaryTreeNode<int>>& node0,
-                         const unique_ptr<BinaryTreeNode<int>>& node1) {
-  // TODO - you fill in here.
-  return nullptr;
+BinaryTreeNode<int>* Lca(const unique_ptr<BinaryTreeNode<int>>& node0, const unique_ptr<BinaryTreeNode<int>>& node1)
+{
+  std::unordered_set<BinaryTreeNode<int>* > seen;
+  BinaryTreeNode<int>* p0;
+  BinaryTreeNode<int>* p1;
+  p0 = node0.get();
+  p1 = node1.get();
+  
+  // Trivial case: starting nodes are equal
+  if (p0 == p1) return p0;
+
+  // Increment pointers, check if we've seen the pointers already, then add the pointers to seen set
+  seen.insert(p0);
+  seen.insert(p1);
+  while(p0 || p1)
+  {
+    p0 = p0 == nullptr ? p0 : p0->parent;
+    if (p0 != nullptr && seen.count(p0)) return p0;
+    seen.insert(p0);
+
+    p1 = p1 == nullptr ? p1 : p1->parent;
+    if (p1 != nullptr && seen.count(p1)) return p1;
+    seen.insert(p1);
+  }
+  return nullptr; // Should never reach here
 }
 int LcaWrapper(TimedExecutor& executor,
                const unique_ptr<BinaryTreeNode<int>>& tree, int key0,
