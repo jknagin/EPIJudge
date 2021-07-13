@@ -1,25 +1,84 @@
 #include <vector>
+#include <unordered_map>
+#include <list>
+#include <utility>
 
 #include "test_framework/generic_test.h"
 #include "test_framework/serialization_traits.h"
 #include "test_framework/test_failure.h"
 
 class LruCache {
+ private:
+  // table maps from integer keys to iterators in linked list lst, as well as the value associated with the key
+  std::unordered_map<int, std::pair<std::list<int>::iterator, int> > table;
+  std::list<int> lst;
+  int capacity;
+
  public:
-  LruCache(size_t capacity) {}
+  LruCache(size_t capacity) {
+    this->capacity = capacity;
+  }
+
+  // Erase key from lst by iterator
+  // Push key to front of lst
+  void moveToFront(const int& isbn)
+  {
+    std::list<int>::iterator it = table[isbn].first;
+    lst.erase(it);
+    lst.push_front(isbn);
+  }
+
+  // If key exists, move it to the front and return the value associated with it
   int Lookup(int isbn) {
-    // TODO - you fill in here.
-    return 0;
+    if (table.count(isbn))
+    {
+      moveToFront(isbn);
+      return table[isbn].second;
+    }
+    else return -1;
   }
+
+  // If the key exists, just move it to the front
+  // Otherwise, if the cache is full, evict the LRU element. Then add the new element
   void Insert(int isbn, int price) {
-    // TODO - you fill in here.
-    return;
+    if (table.count(isbn))
+    {
+      moveToFront(isbn);
+    }
+    else
+    {
+      // To evict, erase from lst by iterator, and erase from table by key
+      if (table.size() == capacity)
+      {
+        int isbnToRemove = lst.back();
+        std::list<int>::iterator it = table[isbnToRemove].first;
+        lst.erase(it);
+        table.erase(isbnToRemove);
+      }
+
+      // Push new key to front of lst
+      // Add key to table, with value from make_pair of begin of lst, and price
+      lst.push_front(isbn);
+      table[isbn] = std::make_pair(lst.begin(), price);
+    }
   }
-  bool Erase(int isbn) {
-    // TODO - you fill in here.
-    return true;
+
+  // If key exists, erase it from lst by iterator and from table by value, and return true
+  // Else, return falses
+  bool Erase(int isbn)
+  {
+    if (table.count(isbn))
+    {
+      std::list<int>::iterator it = table[isbn].first;
+      lst.erase(it);
+      table.erase(isbn);
+      return true;
+    }
+    else return false;
   }
+
 };
+
 struct Op {
   std::string code;
   int arg1;
