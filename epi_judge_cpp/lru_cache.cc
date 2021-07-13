@@ -14,18 +14,20 @@ class LruCache {
   std::list<int> lst;
   int capacity;
 
- public:
-  LruCache(size_t capacity) {
-    this->capacity = capacity;
-  }
-
   // Erase key from lst by iterator
   // Push key to front of lst
+  // Update iterator mapped to by isbn to lst.begin()
   void moveToFront(const int& isbn)
   {
     std::list<int>::iterator it = table[isbn].first;
     lst.erase(it);
     lst.push_front(isbn);
+    table[isbn].first = lst.begin();
+  }
+
+ public:
+  LruCache(size_t capacity) {
+    this->capacity = capacity;
   }
 
   // If key exists, move it to the front and return the value associated with it
