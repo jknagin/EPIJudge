@@ -7,8 +7,9 @@
 using std::vector;
 
 vector<int> GrayCode(int num_bits) {
-  // TODO - you fill in here.
-  return {};
+  std::vector<int> ret(1 << num_bits);
+  for(int i=0;i<ret.size();++i) ret[i] = i ^ (i >> 1);
+  return ret;
 }
 bool DiffersByOneBit(int x, int y) {
   int bit_difference = x ^ y;

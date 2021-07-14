@@ -2106,7 +2106,7 @@ problem_mapping = {
         },
         "15.11 Compute a Gray code": {
             "C++: gray_code.cc": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Java: GrayCode.java": {
