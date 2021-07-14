@@ -2050,7 +2050,7 @@ problem_mapping = {
         },
         "15.07 Generate strings of matched parens": {
             "C++: enumerate_balanced_parentheses.cc": {
-                "passed": 0,
+                "passed": 11,
                 "total": 11
             },
             "Java: EnumerateBalancedParentheses.java": {
