@@ -30,7 +30,7 @@ void helper(const std::string& phone_number, int i, std::string& pnemonic, std::
   {
     pnemonic.push_back(c);
     helper(phone_number, i + 1, pnemonic, pnemonics);
-    pnemonic.erase(pnemonic.end() - 1);
+    pnemonic.pop_back();
   }
 }
 
